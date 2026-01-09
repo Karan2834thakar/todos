@@ -7,17 +7,16 @@ const TodoList = ({ todos, onToggleTodo }) => {
         <div className="col-span-full text-center text-white py-12">
           <p className="text-xl">No todos found</p>
         </div>
-      ) : (
+      ) :
+       (
         todos.map(todo => (
           <div
-            key={todo.id}
-            className={`p-6 rounded-lg shadow-lg cursor-pointer transition-all duration-200 transform hover:scale-105 ${
+            key={todo.id} className={`p-6 rounded-lg shadow-lg cursor-pointer transition-all duration-200 transform hover:scale-105 ${
               todo.completed
                 ? 'bg-green-500 bg-opacity-90'
                 : 'bg-white bg-opacity-95'
             }`}
-            onClick=
-            {() => onToggleTodo(todo.id)}
+            onClick= {() => onToggleTodo(todo.id)}
           >
     
             <div className="flex items-start mb-4">
@@ -32,11 +31,11 @@ const TodoList = ({ todos, onToggleTodo }) => {
                   ? 'text-white bg-green-700 px-3 py-1 rounded'
                   : 'text-blue-600 bg-blue-100 px-3 py-1 rounded'
               }`}>
+                
                 {todo.completed ? 'Done' : 'Pending'}
               </span>
             </div>
 
-         
             <h3 className={`text-lg font-semibold mb-3 ${
               todo.completed
                 ? 'text-white line-through'
@@ -44,8 +43,6 @@ const TodoList = ({ todos, onToggleTodo }) => {
             }`}>
               {todo.title}
             </h3>
-
-            {/* Todo ID and User Info */}
             <div className={`text-sm ${
               todo.completed
                 ? 'text-green-100'

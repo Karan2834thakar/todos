@@ -4,6 +4,8 @@ import TodoList from './components/todo.jsx';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
+  
+  
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -13,18 +15,25 @@ const App = () => {
       try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/todos');
         setTodos(response.data);
+        
         setLoading(false);
       } catch (error) {
         console.error('Error fetching todos:', error);
+        
         setLoading(false);
       }
     };
+
+
+
 
     fetchTodos();
   }, []);
 
   
   const toggleTodo = (id) => {
+    
+    
     setTodos(todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     ));
@@ -32,6 +41,7 @@ const App = () => {
 
   
   const filteredTodos = todos.filter(todo =>
+
     todo.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -50,9 +60,8 @@ const App = () => {
 
     
         <div className="mb-6">
-          <input
-            type="text"
-            placeholder="Search todos..."
+          <input type="text"
+ placeholder="Search todos..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full px-4 py-3 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-white"
@@ -61,7 +70,8 @@ const App = () => {
 
     
         <div className="mb-4 text-white text-sm">
-          Showing {filteredTodos.length} of {todos.length} todos
+               Showing 
+               {filteredTodos.length} of {todos.length} todos
         </div>
 
         
